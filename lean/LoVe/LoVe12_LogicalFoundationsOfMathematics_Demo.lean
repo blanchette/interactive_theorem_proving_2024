@@ -300,54 +300,54 @@ Examples:
 
 ### First Example: Full Binary Trees -/
 
-#check BinTree
+#check Tree
 #check IsFull
 #check mirror
 #check IsFull_mirror
 #check mirror_mirror
 
-def FullBinTree (α : Type) : Type :=
-  {t : BinTree α // IsFull t}
+def FullTree (α : Type) : Type :=
+  {t : Tree α // IsFull t}
 
 #print Subtype
 #check Subtype.mk
 
-/- To define elements of `FullBinTree`, we must provide a `BinTree` and a proof
-that it is full: -/
+/- To define elements of `FullTree`, we must provide a `Tree` and a proof that
+it is full: -/
 
-def emptyFullBinTree : FullBinTree ℕ :=
-  Subtype.mk BinTree.empty IsFull.empty
+def nilFullTree : FullTree ℕ :=
+  Subtype.mk Tree.nil IsFull.nil
 
-def fullBinTree6 : FullBinTree ℕ :=
-  Subtype.mk (BinTree.node 6 BinTree.empty BinTree.empty)
+def fullTree6 : FullTree ℕ :=
+  Subtype.mk (Tree.node 6 Tree.nil Tree.nil)
     (by
        apply IsFull.node
-       apply IsFull.empty
-       apply IsFull.empty
+       apply IsFull.nil
+       apply IsFull.nil
        rfl)
 
-#reduce Subtype.val fullBinTree6
-#check Subtype.property fullBinTree6
+#reduce Subtype.val fullTree6
+#check Subtype.property fullTree6
 
-/- We can lift existing operations on `BinTree` to `FullBinTree`: -/
+/- We can lift existing operations on `Tree` to `FullTree`: -/
 
-def FullBinTree.mirror {α : Type} (t : FullBinTree α) :
-  FullBinTree α :=
+def FullTree.mirror {α : Type} (t : FullTree α) :
+  FullTree α :=
   Subtype.mk (LoVe.mirror (Subtype.val t))
     (by
        apply IsFull_mirror
        apply Subtype.property t)
 
-#reduce Subtype.val (FullBinTree.mirror fullBinTree6)
+#reduce Subtype.val (FullTree.mirror fullTree6)
 
 /- And of course we can prove theorems about the lifted operations: -/
 
-theorem FullBinTree.mirror_mirror {α : Type}
-  (t : FullBinTree α) :
-  (FullBinTree.mirror (FullBinTree.mirror t)) = t :=
+theorem FullTree.mirror_mirror {α : Type}
+  (t : FullTree α) :
+  (FullTree.mirror (FullTree.mirror t)) = t :=
   by
     apply Subtype.eq
-    simp [FullBinTree.mirror, LoVe.mirror_mirror]
+    simp [FullTree.mirror, LoVe.mirror_mirror]
 
 #check Subtype.eq
 

@@ -416,9 +416,7 @@ theorem map_zip {α α' β β' : Type} (f : α → α')
 Inductive types with constructors taking several recursive arguments define
 tree-like objects. __Binary trees__ have nodes with at most two children. -/
 
-inductive BinTree (α : Type) : Type where
-  | empty : BinTree α
-  | node  : α → BinTree α → BinTree α → BinTree α
+#print Tree
 
 /- The type `AExp` of arithmetic expressions was also an example of a tree data
 structure.
@@ -434,37 +432,37 @@ Recursive definitions (and proofs by induction) work roughly as for lists, but
 we may need to recurse (or invoke the induction hypothesis) on several child
 nodes. -/
 
-def mirror {α : Type} : BinTree α → BinTree α
-  | BinTree.empty      => BinTree.empty
-  | BinTree.node a l r => BinTree.node a (mirror r) (mirror l)
+def mirror {α : Type} : Tree α → Tree α
+  | Tree.nil        => Tree.nil
+  | Tree.node a l r => Tree.node a (mirror r) (mirror l)
 
-theorem mirror_mirror {α : Type} (t : BinTree α) :
+theorem mirror_mirror {α : Type} (t : Tree α) :
   mirror (mirror t) = t :=
   by
     induction t with
-    | empty                => rfl
+    | nil                  => rfl
     | node a l r ih_l ih_r => simp [mirror, ih_l, ih_r]
 
 theorem mirror_mirror_calc {α : Type} :
-  ∀t : BinTree α, mirror (mirror t) = t
-  | BinTree.empty      => by rfl
-  | BinTree.node a l r =>
+  ∀t : Tree α, mirror (mirror t) = t
+  | Tree.nil        => by rfl
+  | Tree.node a l r =>
     calc
-      mirror (mirror (BinTree.node a l r))
-      = mirror (BinTree.node a (mirror r) (mirror l)) :=
+      mirror (mirror (Tree.node a l r))
+      = mirror (Tree.node a (mirror r) (mirror l)) :=
         by rfl
-      _ = BinTree.node a (mirror (mirror l))
+      _ = Tree.node a (mirror (mirror l))
         (mirror (mirror r)) :=
         by rfl
-      _ = BinTree.node a l (mirror (mirror r)) :=
+      _ = Tree.node a l (mirror (mirror r)) :=
         by rw [mirror_mirror_calc l]
-      _ = BinTree.node a l r :=
+      _ = Tree.node a l r :=
         by rw [mirror_mirror_calc r]
 
-theorem mirror_Eq_empty_Iff {α : Type} :
-  ∀t : BinTree α, mirror t = BinTree.empty ↔ t = BinTree.empty
-  | BinTree.empty      => by simp [mirror]
-  | BinTree.node _ _ _ => by simp [mirror]
+theorem mirror_Eq_nil_Iff {α : Type} :
+  ∀t : Tree α, mirror t = Tree.nil ↔ t = Tree.nil
+  | Tree.nil        => by simp [mirror]
+  | Tree.node _ _ _ => by simp [mirror]
 
 
 /- ## Dependent Inductive Types (**optional**) -/

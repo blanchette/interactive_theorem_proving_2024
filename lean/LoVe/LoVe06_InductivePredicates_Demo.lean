@@ -465,42 +465,41 @@ theorem Palindrome_reverse {α : Type} (xs : List α)
 
 /- ### Full Binary Trees -/
 
-#check BinTree
+#check Tree
 
-inductive IsFull {α : Type} : BinTree α → Prop where
-  | empty : IsFull BinTree.empty
-  | node (a : α) (l r : BinTree α)
+inductive IsFull {α : Type} : Tree α → Prop where
+  | nil : IsFull Tree.nil
+  | node (a : α) (l r : Tree α)
       (hl : IsFull l) (hr : IsFull r)
-      (hiff : l = BinTree.empty ↔ r = BinTree.empty) :
-    IsFull (BinTree.node a l r)
+      (hiff : l = Tree.nil ↔ r = Tree.nil) :
+    IsFull (Tree.node a l r)
 
 theorem IsFull_singleton {α : Type} (a : α) :
-  IsFull (BinTree.node a BinTree.empty BinTree.empty) :=
+  IsFull (Tree.node a Tree.nil Tree.nil) :=
   by
     apply IsFull.node
-    { exact IsFull.empty }
-    { exact IsFull.empty }
+    { exact IsFull.nil }
+    { exact IsFull.nil }
     { rfl }
 
-theorem IsFull_mirror {α : Type} (t : BinTree α)
+theorem IsFull_mirror {α : Type} (t : Tree α)
     (ht : IsFull t) :
   IsFull (mirror t) :=
   by
     induction ht with
-    | empty                           => exact IsFull.empty
+    | nil                             => exact IsFull.nil
     | node a l r hl hr hiff ih_l ih_r =>
       { rw [mirror]
         apply IsFull.node
         { exact ih_r }
         { exact ih_l }
-        { simp [mirror_Eq_empty_Iff, *] } }
+        { simp [mirror_Eq_nil_Iff, *] } }
 
-theorem IsFull_mirror_struct_induct {α : Type}
-  (t : BinTree α) :
+theorem IsFull_mirror_struct_induct {α : Type} (t : Tree α) :
   IsFull t → IsFull (mirror t) :=
   by
     induction t with
-    | empty                =>
+    | nil                  =>
       { intro ht
         exact ht }
     | node a l r ih_l ih_r =>
@@ -511,7 +510,7 @@ theorem IsFull_mirror_struct_induct {α : Type}
             apply IsFull.node
             { exact ih_r hr }
             { apply ih_l hl }
-            { simp [mirror_Eq_empty_Iff, *] } } }
+            { simp [mirror_Eq_nil_Iff, *] } } }
 
 
 /- ### First-Order Terms -/

@@ -376,18 +376,18 @@ theorem Finset_order_example :
 /- `decide` is a tactic that can be used on true decidable goals (e.g., a true
 executable expression). -/
 
-def List.elems : BinTree ℕ → List ℕ
-  | BinTree.empty      => []
-  | BinTree.node a l r => a :: List.elems l ++ List.elems r
+def List.elems : Tree ℕ → List ℕ
+  | Tree.nil        => []
+  | Tree.node a l r => a :: List.elems l ++ List.elems r
 
-def Multiset.elems : BinTree ℕ → Multiset ℕ
-  | BinTree.empty      => ∅
-  | BinTree.node a l r =>
+def Multiset.elems : Tree ℕ → Multiset ℕ
+  | Tree.nil        => ∅
+  | Tree.node a l r =>
     {a} ∪ Multiset.elems l ∪ Multiset.elems r
 
-def Finset.elems : BinTree ℕ → Finset ℕ
-  | BinTree.empty      => ∅
-  | BinTree.node a l r => {a} ∪ Finset.elems l ∪ Finset.elems r
+def Finset.elems : Tree ℕ → Finset ℕ
+  | Tree.nil        => ∅
+  | Tree.node a l r => {a} ∪ Finset.elems l ∪ Finset.elems r
 
 #eval List.sum [2, 3, 4]
 #eval Multiset.sum ({2, 3, 4} : Multiset ℕ)

@@ -97,24 +97,24 @@ theorems (e.g., `IsFull_mirror`, `mirror_mirror`). -/
 #check mirror_mirror
 
 theorem mirror_IsFull {α : Type} :
-  ∀t : BinTree α, IsFull (mirror t) → IsFull t :=
+  ∀t : Tree α, IsFull (mirror t) → IsFull t :=
   sorry
 
 /- 3.2. Define a `map` function on binary trees, similar to `List.map`. -/
 
-def BinTree.map {α β : Type} (f : α → β) : BinTree α → BinTree β :=
+def Tree.map {α β : Type} (f : α → β) : Tree α → Tree β :=
   sorry
 
 /- 3.3. Prove the following theorem by case distinction. -/
 
-theorem BinTree.map_eq_empty_iff {α β : Type} (f : α → β) :
-  ∀t : BinTree α, BinTree.map f t = BinTree.empty ↔ t = BinTree.empty :=
+theorem Tree.map_eq_empty_iff {α β : Type} (f : α → β) :
+  ∀t : Tree α, Tree.map f t = Tree.nil ↔ t = Tree.nil :=
   sorry
 
 /- 3.4 (**optional**). Prove the following theorem by rule induction. -/
 
-theorem BinTree.map_mirror {α β : Type} (f : α → β) :
-  ∀t : BinTree α, IsFull t → IsFull (BinTree.map f t) :=
+theorem map_mirror {α β : Type} (f : α → β) :
+  ∀t : Tree α, IsFull t → IsFull (Tree.map f t) :=
   sorry
 
 end LoVe
