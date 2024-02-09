@@ -47,7 +47,7 @@ addition operator. -/
 
 #print AddMonoid
 
-@[instance] def Tree.AddMonoid {α : Type} : AddMonoid (Tree α) :=
+instance Tree.AddMonoid {α : Type} : AddMonoid (Tree α) :=
   { add       :=
       sorry
     add_assoc :=

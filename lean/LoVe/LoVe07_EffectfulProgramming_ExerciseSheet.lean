@@ -46,7 +46,7 @@ def Option.orelse {α : Type} : Option α → Option α → Option α
   | Option.none,   ma' => ma'
   | Option.some a, _   => Option.some a
 
-@[instance] def Option.LawfulMonadWithOrelse :
+instance Option.LawfulMonadWithOrelse :
   LawfulMonadWithOrelse Option :=
   { Option.LawfulMonad with
     emp          := Option.none
@@ -141,7 +141,7 @@ Hints:
 
 * The theorem `FAction.pure_apply` or `FAction.bind_apply` might prove useful. -/
 
-@[instance] def FAction.LawfulMonad {σ : Type} : LawfulMonad (FAction σ) :=
+instance FAction.LawfulMonad {σ : Type} : LawfulMonad (FAction σ) :=
   { FAction.Bind, FAction.Pure with
     pure_bind :=
       by

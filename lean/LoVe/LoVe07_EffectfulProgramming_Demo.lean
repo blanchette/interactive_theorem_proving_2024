@@ -161,7 +161,7 @@ Type                 | Effect
 `id`                 | no effects
 `Option`             | simple exceptions
 `fun α ↦ σ → α × σ`  | threading through a state of type `σ`
-`fun α ↦ Set α`      | nondeterministic computation returning `α` values
+`Set`                | nondeterministic computation returning `α` values
 `fun α ↦ t → α`      | reading elements of type `t` (e.g., a configuration)
 `fun α ↦ ℕ × α`      | adjoining running time (e.g., to model time complexity)
 `fun α ↦ String × α` | adjoining text output (e.g., for logging)
