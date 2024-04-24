@@ -1,7 +1,7 @@
 /- Copyright © 2018–2024 Anne Baanen, Alexander Bentkamp, Jasmin Blanchette,
 Johannes Hölzl, and Jannis Limperg. See `LICENSE.txt`. -/
 
-import LoVe.LoVe01_TypesAndTerms_DemoMaster
+import LoVe.LoVe01_TypesAndTerms_Demo
 
 
 /- # LoVe Exercise 1: Types and Terms
