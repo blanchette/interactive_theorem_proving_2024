@@ -4,7 +4,6 @@ Johannes Hölzl, and Jannis Limperg. See `LICENSE.txt`. -/
 import Aesop
 import Mathlib.Algebra.Field.Defs
 import Mathlib.Data.Finset.Basic
-import Mathlib.Tactic.LibrarySearch
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Ring
 
