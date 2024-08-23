@@ -1,13 +1,11 @@
 /- Copyright © 2018–2024 Anne Baanen, Alexander Bentkamp, Jasmin Blanchette,
 Johannes Hölzl, and Jannis Limperg. See `LICENSE.txt`. -/
 
-import Aesop
 import Mathlib.Algebra.Field.Defs
 import Mathlib.Data.Finset.Basic
-import Mathlib.Tactic.LibrarySearch
+import Mathlib.Data.Tree.Basic
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Ring
-
 
 /- # LoVelib: Logical Verification Library -/
 

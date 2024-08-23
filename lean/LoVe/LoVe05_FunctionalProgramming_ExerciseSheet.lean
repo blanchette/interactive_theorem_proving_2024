@@ -3,7 +3,6 @@ Johannes Hölzl, and Jannis Limperg. See `LICENSE.txt`. -/
 
 import LoVe.LoVe04_ForwardProofs_Demo
 
-
 /- # LoVe Exercise 5: Functional Programming
 
 Replace the placeholders (e.g., `:= sorry`) with your solutions. -/
@@ -145,7 +144,7 @@ theorem take_drop {α : Type} :
 
 -- enter your definition here
 
-/- 3.2 (**optional**). Register a textual representation of the type `term` as
+/- 3.2 (**optional**). Register a textual representation of the type `Term` as
 an instance of the `Repr` type class. Make sure to supply enough parentheses to
 guarantee that the output is unambiguous. -/
 

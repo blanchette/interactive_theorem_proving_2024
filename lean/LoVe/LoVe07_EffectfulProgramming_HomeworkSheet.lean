@@ -31,7 +31,7 @@ types. Inventory all the arguments and operations available (e.g., `pure`,
 bricks. -/
 
 def map {m : Type → Type} [LawfulMonad m] {α β : Type} (f : α → β) (ma : m α) :
-  m β := :=
+    m β :=
   sorry
 
 /- 1.2 (1 point). Prove the identity law for `map`.

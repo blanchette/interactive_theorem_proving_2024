@@ -3,7 +3,6 @@ Johannes Hölzl, and Jannis Limperg. See `LICENSE.txt`. -/
 
 import LoVe.LoVelib
 
-
 /- # LoVe Demo 5: Functional Programming
 
 We take a closer look at the basics of typed functional programming: inductive
